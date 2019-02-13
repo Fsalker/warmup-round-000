@@ -45,7 +45,9 @@ Here are your wonderful `Full Stack` Pancakes! :D
 ## Procedures
 * `npm run supply-pancakes` provides you with the Bowl, Flour, Eggs essential for any self respecting chef
 * `npm run supply-pancakes-nodemon` sends out Nodemon to fetch the resources automatically. Very nice and helpful boy!
-* `npm run backend-test` peeks at the batter and lets you know everything's alright!
+* `npm run supply-pancakes-test` peeks at the batter and lets you know everything's alright!
+
+Plus all the procedures from create-react-app :)
 
 ### Trivia
 
