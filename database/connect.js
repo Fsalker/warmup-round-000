@@ -6,7 +6,8 @@ let getConnection = async() => {
     let settings = {
       poolSize: 5,
       useNewUrlParser: true,
-      useCreateIndex: true
+      useCreateIndex: true,
+      useFindAndModify: false,
     }
 
     return (await mongoose.connect(uri, settings)).connection

@@ -8,37 +8,68 @@ module.exports = graphql.buildSchema(`
     bio: String    
   }
   
+  type UserPublicData{
+    username: String!
+    bio: String
+  }
+  
   type Board{
     _id: ID!
     title: String!
+    participantUserIds: [ID!]
   }
   
-  input userInput{
+  type LoginData{
+    jwt: String
+  }
+  
+  
+  
+  input authorisation{
+    jwt: String!
+  }
+  
+  input userCreateInput{
     username: String!
     password: String!
     bio: String
+  }
+  
+  input userLoginInput{
+    username: String!
+    password: String!
   }
   
   input userUpdateInput{
     bio: String!
   }
   
-  input boardInput{
+  input boardCreateInput{
     title: String!
   }
   
-  type Query{
-    getUsers: [User]
-    getBoards: [Board]
+  input boardUpdateInput{
+    title: String
   }
   
+  
+  
+  type Query{
+    getUsers(auth: authorisation): [UserPublicData]
+    getBoards(auth: authorisation): [Board]
+    loginUser(input: userLoginInput): LoginData
+    isMySessionValid(auth: authorisation): Boolean
+  }
+  
+  
+  
   type Mutation{
-    createUser(input: userInput): User
-    updateUser(_id: ID!, input: userUpdateInput): User
-    deleteUser(_id: ID!): String
+    createUser(input: userCreateInput): LoginData
+    updateUser(auth: authorisation, input: userUpdateInput): UserPublicData
+    deleteUser(auth: authorisation): String
     
-    createBoard(input: boardInput): Board
-    updateBoard(_id: ID!, input: boardInput): Board
-    deleteBoard(_id: ID!): String
+    createBoard(auth: authorisation, input: boardCreateInput): Board
+    updateBoard(auth: authorisation, boardId: ID!, input: boardUpdateInput): Board
+    deleteBoard(auth: authorisation, boardId: ID!): String
   }
 `)

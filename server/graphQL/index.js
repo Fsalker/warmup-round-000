@@ -7,10 +7,17 @@ let graphqlHandler = graphqlHTTP({
   schema,
   rootValue,
   graphiql: true,
-  /*formatError: (err) => {
-    console.log("__________ got an error _____")
-    return {message: err, asdf: "12344444"}
-  }*/
+  formatError: (err) => {
+    let errorObj = require("../../controllers/_errorMessages")
+    let errorMessages = Object.values(errorObj).map(e => e.message)
+    let errorExistsInErrorMessages = errorMessages.find(msg => msg == err.message)
+
+    console.log(err)
+    if(errorExistsInErrorMessages || err.message == "jwt must be provided" || err.message=="invalid token" || err.message=="invalid signature")
+      return {message: err.message}
+
+    return {message: errorObj.ERR_SOMETHING.message}
+  }
 })
 
 module.exports = graphqlHandler

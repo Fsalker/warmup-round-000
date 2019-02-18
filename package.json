@@ -2,19 +2,31 @@
   "name": "warmup-round-000",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/src/"
+    ]
+  },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
     "express-graphql": "^0.7.1",
     "graphql": "^14.1.1",
+    "jest": "^23.6.0",
+    "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.11",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-scripts": "2.1.5"
+    "react-redux": "^6.0.0",
+    "react-scripts": "2.1.5",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "supply-pancakes": "node ./server/index.js",
     "supply-pancakes-nodemon": "nodemon ./server/index.js",
-    "supply-pancakes-test": "mocha ./server/test.js --exit",
+    "supply-pancakes-test": "jest ./server/test.js --verbose=false --forceExit",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --verbose=false",

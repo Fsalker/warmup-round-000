@@ -1,0 +1,1 @@
+export let updateSession = value => ({type: "UPDATE_SESSION", session: value})
