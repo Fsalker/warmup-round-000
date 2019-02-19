@@ -1,17 +1,12 @@
 import React from "react"
 import {connect} from "react-redux"
+import Dashboard from "./Dashboard"
+import "./App.css"
 
-let App = (props) => {
+let component = (props) => {
   return (
-    <div>
-      <h2>Hey there!</h2>
-      {props.session}
-    </div>
+    <Dashboard/>
   )
 }
 
-let mapStateToProps = state => ({
-  session: state.session.value
-})
-
-export default connect(mapStateToProps)(App)
+export default component

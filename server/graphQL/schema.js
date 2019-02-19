@@ -72,4 +72,4 @@ module.exports = graphql.buildSchema(`
     updateBoard(auth: authorisation, boardId: ID!, input: boardUpdateInput): Board
     deleteBoard(auth: authorisation, boardId: ID!): String
   }
-`)
+`)``

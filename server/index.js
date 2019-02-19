@@ -27,14 +27,17 @@ let runServer = async() => {
     // Database
     let databaseHandler = require("./../database")
     let connection = await databaseHandler.getConnection()
-    if(process.env.INITIALISE_DATABASE == "true")
+    if(process.env.INITIALISE_DATABASE == "true") {
+      console.log("Resetting Database...")
       await connection.db.dropDatabase()
+    }
 
     // Server
     let graphqlHandler = require("./graphQL")
     let express = require("express")
     let app = express()
     var bodyParser = require('body-parser');
+    app.use(require("cors")())
     app.use(bodyParser.json()); // for parsing application/json
     app.use("/graphql", graphqlHandler)
     app.listen(PORT)

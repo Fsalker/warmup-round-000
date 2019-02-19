@@ -1,1 +1,5 @@
-export let updateSession = value => ({type: "UPDATE_SESSION", session: value})
+export let updateJwt = jwt => ({type: "UPDATE_SESSION", jwt})
+export let updateUsersCreateUsername = username => ({type: "UPDATE_USERS_CREATE_USERNAME", username})
+export let updateUsersCreatePassword = password => ({type: "UPDATE_USERS_CREATE_PASSWORD", password})
+export let updateUsersCreateBiography = biography => ({type: "UPDATE_USERS_CREATE_BIOGRAPHY", biography})
+export let updateUsersCreateAlert = alert => ({type: "UPDATE_USERS_CREATE_ALERT", alert})

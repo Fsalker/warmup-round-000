@@ -1,0 +1,1 @@
+export let API_HOST = `http://localhost:1337/graphql/`
